@@ -5,7 +5,6 @@ Chaac-Weather it is a weather widget, created to be used in Kde Plasma only, the
 - Automatically sets the location using the IP address, although you can also set your location manually in the settings.
 - The current weather information is provided by the Open Mateo API.
 - use the weather system icons.
-- both open mateo with this widget are open source
 - option to set temperature in celsius or fahrenheit
 - 3 different APIs to establish geographic coordinates via IP
 - easily editable bash and qml code
