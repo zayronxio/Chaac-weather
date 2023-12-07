@@ -1,4 +1,4 @@
-Chaac-Weather it is a weather widget, created to be used in Kde Plasma only, the focus is simplicity and the fewest possible elements as well as ease of use, since unlike the other widgets, this one in some cases does not require intervention the end user 
+Chaac-Weather it is a weather widget, created to be used in Kde Plasma only, the focus is simplicity and the fewest possible elements as well as ease of use, since unlike the other widgets, in some cases, this may not require end-user intervention 
 
 ## Features
 
