@@ -43,7 +43,6 @@ ColumnLayout {
             }
              TextField {
             id: latitude
-            validator: RegExpValidator { regExp: /^-?\d*\.?\d*$/ }
             width: 200
               }
 
@@ -55,7 +54,6 @@ ColumnLayout {
             }
              TextField {
             id: longitude
-            validator: RegExpValidator { regExp: /^-?\d*\.?\d*$/ }
             width: 200
               }
 

@@ -11,11 +11,22 @@ if [[ "$cordeprev2" = "$textno" ]]; then
 
     findLatitude=$(echo "$contenidoIpBaseAjs" | grep "latitude")
     findLatitude01=$(echo "$findLatitude" | sed 's/"latitude"://g')
-    latitude=$(echo "$findLatitude01" | sed 's/,//g')
+    if [[ "$findLatitude01" = "$textno" ]]; then
+         contenidoIpBase02=$(curl -s http://ip-api.com/json/?fields=lat,lon)
+         contenidoIpBase02Ajs=$(echo "$contenidoIpBase02" | sed 's/,/\n/g')
+         findLatitude02=$(echo "$contenidoIpBase02Ajs" | grep "lat")
+         findLatitude03=$(echo "$findLatitude02" | sed 's/"lat"://g')
+         latitude=$(echo "$findLatitude01" | sed 's/,//g')
 
-    findLongitud=$(echo "$contenidoIpBaseAjs" | grep "longitude")
-    findLongitud01=$(echo "$findLongitud" | sed 's/"longitude"://g')
-    longitud=$(echo "$findLongitud01" | sed 's/,//g')
+         findLongitud=$(echo "$contenidoIpBase02Ajs" | grep "lon")
+         findLongitud01=$(echo "$findLongitud" | sed 's/"lon"://g')
+         longitud=$(echo "$findLongitud01" | sed 's/,//g')
+         else
+         latitude=$(echo "$findLatitude01" | sed 's/,//g')
+         findLongitud=$(echo "$contenidoIpBaseAjs" | grep "longitude")
+         findLongitud01=$(echo "$findLongitud" | sed 's/"longitude"://g')
+         longitud=$(echo "$findLongitud01" | sed 's/,//g')
+     fi
 else
     cordeprev1=$(echo "$cordeprev2" | sed 's/"loc": "//g')
     cordeprev0=$(echo "$cordeprev1" | sed 's/",//g')

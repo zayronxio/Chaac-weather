@@ -5,6 +5,7 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.15
+import QtGraphicalEffects 1.12
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 
@@ -20,16 +21,20 @@ Item {
     property string useCoordinatesIp: plasmoid.configuration.useCoordinatesIp
     property string temperatureUnit: plasmoid.configuration.temperatureUnit
 
-    property string latitude: (useCoordinatesIp === "true") ? "null" : (plasmoid.configuration.latitudeC === 0) ? "null" : plasmoid.configuration.latitudeC
-    property string longitud: (useCoordinatesIp === "true") ? "null" : (plasmoid.configuration.longitudeC === 0) ? "null" : plasmoid.configuration.longitudeC
+    property int latitudeC: plasmoid.configuration.latitudeC
+    property int longitudeC: plasmoid.configuration.longitudeC
+
+    property string latitude: (useCoordinatesIp === "true") ? "null" : (latitudeC === 0) ? "null" : latitudeC
+    property string longitud: (useCoordinatesIp === "true") ? "null" : (longitudeC === 0) ? "null" : longitudeC
 
 
     property string textbycommand: (" "+latitude+" "+longitud+" ")
 
     property string temperatura: "0"
+    property string temperaturaF: (temperatura*9 / 5)+ 32
     property int codeweather: 0
     property string loc: "null"
-    property string command: "bash $HOME/.local/share/plasma/plasmoids/zayron.weater/contents/ui/lib/datos.sh"
+    property string command: "bash $HOME/.local/share/plasma/plasmoids/zayron.chaac.weather/contents/ui/lib/datos.sh"
 
     PlasmaCore.DataSource {
       id: executable
@@ -178,7 +183,7 @@ onExited: {
                    height: temOfCo.height
                    Text {
                       id: temOfCo
-                      text: (temperatureUnit === "0") ? temperatura : ((temperatura*9 / 5)+ 32)
+                      text: (temperatureUnit === "0") ? temperatura.substring(0,4) : temperaturaF.substring(0,4)
                       font.bold: true
                       color: "white"
                       font.pixelSize: iconAndGrados.height/2.5
