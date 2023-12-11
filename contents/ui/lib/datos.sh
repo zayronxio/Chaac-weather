@@ -68,22 +68,14 @@ codetemprev1=$(echo "$codetemprev" | sed 's/"weather_code"://g')
 codetem=$(echo "$codetemprev1" | sed 's/}}//g')
 
 # Establecimiento de la ubicación
-response=$(curl -s "https://nominatim.openstreetmap.org/reverse?format=json&lat=$latitudefinal&lon=$longitudfinal")
-textoFinal=$(echo "$response" | sed 's/,/,\n/g')
-# // cityprev25=$(echo "$cityprev3" | grep '"address":{')
-# // textoFinal=$(echo "$response" | sed "s/$cityprev25//g")
-cityprev1=$(echo "$textoFinal" | grep '"city"')
-cityprev=$(echo "$cityprev1" | sed 's/"city":"//g')
-city=$(echo "$cityprev" | sed 's/",//g')
-citycond=$(echo "$textoFinal" | grep "textoquenoesta")
+getJason=$(curl -s "https://nominatim.openstreetmap.org/reverse?format=json&lat=$latitudefinal&lon=$longitudfinal")
+textoFinal=$(echo "$getJason" | sed 's/,/,\'$'\n''/g')
+city=$(echo "$textoFinal" | grep -o '"city":"[^"]*"' | sed 's/"city":"//;s/"//')
+citycond=$(echo "$textoFinal" | grep "textoqueobviamentenoesta")
 if [ "$city" = "$citycond" ]; then
-        city_distri02=$(echo "$textoFinal" | grep '"city_district"')
-        city_distri01=$(echo "$city_distri02" | sed 's/"city_district":"//g')
-        city_distri=$(echo "$city_distri01" | sed 's/",//g')
+        city_distri=$(echo "$textoFinal" | grep -o '"city_district":"[^"]*"' | sed 's/"city_district":"//;s/"//')
         if [ "$city_distri" = "$citycond" ]; then
-             cityprev01=$(echo "$textoFinal" | grep '"state"')
-             cityprev0=$(echo "$cityprev01" | sed 's/"state":"//g')
-             state=$(echo "$cityprev0" | sed 's/",//g')
+             state=$(echo "$textoFinal" | grep -o '"state":"[^"]*"' | sed 's/"state":"//;s/"//')
              cityR=$state
        else
              cityR=$city_distri
@@ -103,4 +95,4 @@ else
     result="null"
 fi
 
-echo $result
+echo "$result"
