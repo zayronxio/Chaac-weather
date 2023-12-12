@@ -24,8 +24,8 @@ Item {
     property string latitudeC: plasmoid.configuration.latitudeC
     property string longitudeC: plasmoid.configuration.longitudeC
 
-    property string latitude: (useCoordinatesIp === "true") ? "null" : (latitudeC === 0) ? "null" : latitudeC
-    property string longitud: (useCoordinatesIp === "true") ? "null" : (longitudeC === 0) ? "null" : longitudeC
+    property string latitude: (useCoordinatesIp === "true") ? "null" : (latitudeC === "0") ? "null" : latitudeC
+    property string longitud: (useCoordinatesIp === "true") ? "null" : (longitudeC === "0") ? "null" : longitudeC
 
 
     property string textbycommand: (" "+latitude+" "+longitud+" ")

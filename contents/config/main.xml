@@ -9,10 +9,10 @@
 	<entry name="useCoordinatesIp" type="bool">
             <default>true</default>
         </entry>
-    <entry name="latitudeC" type="int">
-		<default>-0</default>
+    <entry name="latitudeC" type="string">
+		<default>0</default>
 	</entry>
-    <entry name="longitudeC" type="int">
+    <entry name="longitudeC" type="string">
 		<default>0</default>
 	</entry>
      <entry name="temperatureUnit" type="int">
