@@ -122,11 +122,7 @@ onExited: {
 }
 
    function asingicon(){
-           var timeActual = Qt.formatDateTime(new Date(), "h:mm")
-           var cicloOfDay = "night"
-           var nameicon = "null"
-
-           let wmocodes = {
+            let wmocodes = {
               0 : "clear",
               1 : "few-clouds",
               2 : "few-clouds",
@@ -153,10 +149,13 @@ onExited: {
               99 : "storm",
                      }
 
-            if (timeActual > "06:00" && timeActual < "19:45") {
-                         var cicloOfDay = "day"
-                       } var cicloOfDay = "night"
-           return "weather-"+wmocodes[codeweather]+"-"+cicloOfDay
+            var timeActual = Qt.formatDateTime(new Date(), "h:mm")
+            var isDay = timeActual > "06:00" && timeActual < "19:45"
+            var cicloOfDay = isDay ? "day" : "night"
+
+            var iconName = "weather-" + (wmocodes[codeweather] || "unknown") + "-" + cicloOfDay
+
+    return iconName
     }
    Column {
        id: base
