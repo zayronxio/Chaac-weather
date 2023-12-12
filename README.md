@@ -18,3 +18,8 @@ Chaac-Weather it is a weather widget, created to be used in Kde Plasma only, the
 
 ## Images
 ![](https://images.pling.com/img/00/00/24/01/13/2112055/screenshot-20231206-233607.jpg)
+
+## Install
+
+can be installed directly from the software center, discover, searching for the widget name, chaac weather.
+![](https://my.opendesktop.org/s/ZBoQFbB5WdBgXER)
