@@ -30,11 +30,16 @@ RowLayout{
         }
 }
 ColumnLayout {
-    Label {
-        visible: (autamateCoorde.checked === true) ? false : true
-        wrapMode: Text.WordWrap
+    Item{
         width: configRoot.width
-        text:  i18n("To know your geographic coordinates, I recommend using the following website https://open-meteo.com/en/docs")
+        height: instructions.height*2.5
+        Label {
+            id: instructions
+           visible: (autamateCoorde.checked === true) ? false : true
+           wrapMode: Text.WordWrap
+           width: parent.width
+           text:  i18n("To know your geographic coordinates, I recommend using the following website https://open-meteo.com/en/docs")
+       }
     }
   RowLayout{
             visible: (autamateCoorde.checked === true) ? false : true
@@ -50,7 +55,7 @@ ColumnLayout {
         RowLayout{
             visible: (autamateCoorde.checked === true) ? false : true
             Label {
-                text: i18n("latitude")
+                text: i18n("longitude")
             }
              TextField {
             id: longitude
