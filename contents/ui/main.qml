@@ -135,6 +135,8 @@ onExited: {
               61 : "showers",
               63 : "showers",
               65 : "showers",
+              66 : "showers-scattered",
+              67 : "showers",
               71 : "snow-scattered",
               73 : "snow",
               75 : "snow",
