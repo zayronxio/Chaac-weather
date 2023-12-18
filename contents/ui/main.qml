@@ -152,7 +152,7 @@ onExited: {
                      }
 
             var timeActual = Qt.formatDateTime(new Date(), "h:mm")
-            var isDay = timeActual > "06:00" && timeActual < "19:45"
+            var isDay = timeActual > "6:00" && timeActual < "19:45"
             var cicloOfDay = isDay ? "day" : "night"
 
             var iconName = "weather-" + (wmocodes[codeweather] || "unknown") + "-" + cicloOfDay
