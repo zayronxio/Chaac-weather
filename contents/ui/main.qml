@@ -151,14 +151,31 @@ onExited: {
               99 : "storm",
                      }
 
-            var timeActual = Qt.formatDateTime(new Date(), "h:mm")
-            var isDay = timeActual > "06:00" && timeActual < "19:45"
-            var cicloOfDay = isDay ? "day" : "night"
+            var timeActual = Qt.formatDateTime(new Date(), "h")
+            var isDay = timeActual > "6" && timeActual < "19"
+            var cicloOfDay = isday()
 
             var iconName = "weather-" + (wmocodes[codeweather] || "unknown") + "-" + cicloOfDay
 
     return iconName
     }
+
+  function isday() {
+    var timeActual = Qt.formatDateTime(new Date(), "h")
+    if (timeActual < "6") {
+      if (timeActual > "19") {
+        return "night"
+      } else {
+        return "day"
+      }
+    } else {
+      if (timeActual > "19") {
+        return "night"
+      } else {
+        return "day"
+      }
+    }
+  }
    Column {
        id: base
        width: parent.width < parent.height*2 ? parent.width : parent.height*2
