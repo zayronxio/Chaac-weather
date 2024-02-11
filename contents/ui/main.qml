@@ -19,6 +19,7 @@ Item {
     Plasmoid.backgroundHints: PlasmaCore.Types.ConfigurableBackground
 
     property string useCoordinatesIp: plasmoid.configuration.useCoordinatesIp
+    property bool boldfonts: plasmoid.configuration.boldfonts
     property string temperatureUnit: plasmoid.configuration.temperatureUnit
 
     property string latitudeC: plasmoid.configuration.latitudeC
@@ -162,14 +163,14 @@ onExited: {
 
   function isday() {
     var timeActual = Qt.formatDateTime(new Date(), "h")
-    if (timeActual < "6") {
-      if (timeActual > "19") {
+    if (timeActual < 6) {
+      if (timeActual > 19) {
         return "night"
       } else {
         return "day"
       }
     } else {
-      if (timeActual > "19") {
+      if (timeActual > 19) {
         return "night"
       } else {
         return "day"
@@ -201,14 +202,14 @@ onExited: {
                    height: temOfCo.height
                    Text {
                       id: temOfCo
-                      text: (temperatureUnit === "0") ? temperatura.substring(0,4) : temperaturaF.substring(0,4)
-                      font.bold: true
+                      text: (temperatureUnit === "0") ? parseFloat(temperatura).toFixed(1) : parseFloat(temperaturaF).toFixed(1)
+                      font.bold: boldfonts
                       color: "white"
                       font.pixelSize: iconAndGrados.height/2.5
                         }
                    Text {
                       text: (temperatureUnit === "0") ? "°C" : "°F"
-                      font.bold: true
+                      font.bold: boldfonts
                       color: "white"
                       font.pixelSize: iconAndGrados.height/5
                       }
