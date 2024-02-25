@@ -65,8 +65,8 @@ Item {
 
 Component.onCompleted: {
             var cmd = command+textbycommand+"tem"
-            var cmd1 = command+textbycommand+"ubi"
-            var cmd2 = command+textbycommand+"codetem"+" "+(Qt.locale().name).replace("_", "-")
+            var cmd1 = command+textbycommand+"ubi"+" "+(Qt.locale().name).replace("_", "-")
+            var cmd2 = command+textbycommand+"codetem"
             executable.exec(cmd)
             executable2.exec(cmd1)
             executable3.exec(cmd2)
@@ -232,7 +232,7 @@ onExited: {
             repeat: true
             onTriggered: {
                var cmd = command+textbycommand+"tem"
-               var cmd1 = command+textbycommand+"ubi"
+               var cmd1 = command+textbycommand+"ubi"+" "+(Qt.locale().name).replace("_", "-")
                var cmd2 = command+textbycommand+"codetem"
                executable.exec(cmd)
                executable2.exec(cmd1)
