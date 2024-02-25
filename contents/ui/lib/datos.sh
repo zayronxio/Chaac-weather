@@ -68,7 +68,7 @@ codetemprev1=$(echo "$codetemprev" | sed 's/"weather_code"://g')
 codetem=$(echo "$codetemprev1" | sed 's/}}//g')
 
 # Establecimiento de la ubicación
-getJason=$(curl -s "https://nominatim.openstreetmap.org/reverse?format=json&lat=$latitudefinal&lon=$longitudfinal")
+getJason=$(curl -s "https://nominatim.openstreetmap.org/reverse?format=json&lat=$latitudefinal&lon=$longitudfinal&accept-language=$4")
 textoFinal=$(echo "$getJason" | sed 's/,/,\'$'\n''/g')
 city=$(echo "$textoFinal" | grep -o '"city":"[^"]*"' | sed 's/"city":"//;s/"//')
 citycond=$(echo "$textoFinal" | grep "textoqueobviamentenoesta")

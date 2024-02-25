@@ -66,7 +66,7 @@ Item {
 Component.onCompleted: {
             var cmd = command+textbycommand+"tem"
             var cmd1 = command+textbycommand+"ubi"
-            var cmd2 = command+textbycommand+"codetem"
+            var cmd2 = command+textbycommand+"codetem"+" "+(Qt.locale().name).replace("_", "-")
             executable.exec(cmd)
             executable2.exec(cmd1)
             executable3.exec(cmd2)
